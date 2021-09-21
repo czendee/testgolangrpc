@@ -79,6 +79,7 @@ func startHTTP(httpPort, grpcPort string) error {
 		w.Write(schema)
 	})
 	mux.Handle("/v1/", gwmux)
+	mux.Handle("/v2/", gwmuxmultiplica)
 	mux.Handle("/", http.FileServer(http.Dir("swagger-ui")))
 
 	http.ListenAndServe(":"+httpPort, cors(mux))
