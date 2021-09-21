@@ -98,7 +98,7 @@ func RegisterGreeterHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 }
 
 var (
-	pattern_Greeter_SayMultiplica_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"v1", "multiplica", "greeter", "say-multiplica"}, ""))
+	pattern_Greeter_SayMultiplica_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"v2", "multiplica", "greeter", "say-multiplica"}, ""))
 )
 
 var (
