@@ -48,9 +48,8 @@ func (s *server) SayMultiplica(ctx context.Context, in *mul.MultiplicaRequest) (
 	 fmt.Println(resultado) 
 	sresultado := fmt.Sprintf("%f", resultado)
 
-	return &mul.MultiplicaReply{Message: "Hello " + in.Numero +" multiplica" + sresultado}, nil
+	return &mul.MultiplicaReply{Message: " " + in.Numero +" multiplica" + sresultado}, nil
 	
-//	return &mul.MultiplicaReply{Message: "Hello " + in.Name}, nil
 }
 
 
@@ -77,19 +76,15 @@ func cors(next http.Handler) http.Handler {
 }
 
 func startHTTP(httpPort, grpcPort string) error {
-	schema, err := ioutil.ReadFile("helloworld/helloworld.swagger.json")
-	if err != nil {
-		return err
-	}
+//	schema, err := ioutil.ReadFile("helloworld/helloworld.swagger.json")
+//	if err != nil {
+//		return err
+//	}
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
-	gwmux := runtime.NewServeMux()
-	opts := []grpc.DialOption{grpc.WithInsecure()}
-	if err := hw.RegisterGreeterHandlerFromEndpoint(ctx, gwmux, "127.0.0.1:"+grpcPort, opts); err != nil {
-		return err
-	}
+
 
 	gwmuxmultiplica := runtime.NewServeMux()
 	optsmul := []grpc.DialOption{grpc.WithInsecure()}
@@ -98,14 +93,8 @@ func startHTTP(httpPort, grpcPort string) error {
 	}
 	
 	mux := http.NewServeMux()
-	mux.HandleFunc("/v1/helloworld/greeter/swagger", func(w http.ResponseWriter, r *http.Request) {
-		Set(w, ContentType("application/json"))
-		w.WriteHeader(http.StatusOK)
-		w.Write(schema)
-	})
-	mux.Handle("/v1/", gwmux)
+
 	mux.Handle("/v2/", gwmuxmultiplica)
-	mux.Handle("/", http.FileServer(http.Dir("swagger-ui")))
 
 	http.ListenAndServe(":"+httpPort, cors(mux))
 	return nil
