@@ -20,3 +20,6 @@ helloworld/helloworld.swagger.json: helloworld/helloworld.proto
 				-I$(GOPATH)/src/github.com/gengo/grpc-gateway/third_party/googleapis \
 				--swagger_out=logtostderr=true:helloworld \
 				helloworld/helloworld.proto
+				
+multiplica/multiplica.pb.go: multiplica/multiplica.proto
+               protoc -IC:\2021\trabajonuevo\projectoos\multiplica\grpc\testgolangrpc\vendor\ -I=multiplica\ --go_out=multiplica\ multiplica\multiplica.proto
