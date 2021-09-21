@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc"
 
 	hw "github.com/kyleconroy/grpc-heroku/helloworld"
-	mul "vendor/multiplica/multiplica"
+	mul "multiplica/multiplica"
 )
 
 type server struct{}
