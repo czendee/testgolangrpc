@@ -48,7 +48,7 @@ type MultiplicaReply struct {
 	Message string `protobuf:"bytes,1,opt,name=message" json:"message,omitempty"`
 }
 
-func (m *MultiplicaReply) Reset()                    { *m = HelloReply{} }
+func (m *MultiplicaReply) Reset()                    { *m = MultiplicaReply{} }
 func (m *MultiplicaReply) String() string            { return proto.CompactTextString(m) }
 func (*MultiplicaReply) ProtoMessage()               {}
 func (*MultiplicaReply) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
@@ -70,7 +70,7 @@ const _ = grpc.SupportPackageIsVersion2
 
 type GreeterClient interface {
 	// Sends a greeting
-	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
+	SayMultiplica(ctx context.Context, in *MultiplicaRequest, opts ...grpc.CallOption) (*MultiplicaReply, error)
 }
 
 type greeterClient struct {
@@ -114,7 +114,7 @@ func _Greeter_SayMultiplica_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/multiplica.Greeter/SayMultiplica",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServer).SayMultiplica(ctx, req.(*HelloRequest))
+		return srv.(GreeterServer).SayMultiplica(ctx, req.(*MultiplicaRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
