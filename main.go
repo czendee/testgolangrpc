@@ -36,7 +36,15 @@ func (s *server) SayMultiplica(ctx context.Context, in *mul.MultiplicaRequest) (
 		s1final =s1;
        }
 	
-	resultado := s1final* s1final;
+	elemento2 :=in.Veces
+	var s2final float64 = 0
+	
+	if s2, err := strconv.ParseFloat(elemento2, 64); err == nil {
+             fmt.Println(s2) // 3.1415927410125732
+		s1final =s2;
+       }
+	
+	resultado := s1final* s2final;
 	 fmt.Println(resultado) 
 	sresultado := fmt.Sprintf("%f", resultado)
 
