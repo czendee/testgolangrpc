@@ -76,10 +76,7 @@ func cors(next http.Handler) http.Handler {
 }
 
 func startHTTP(httpPort, grpcPort string) error {
-//	schema, err := ioutil.ReadFile("helloworld/helloworld.swagger.json")
-//	if err != nil {
-//		return err
-//	}
+
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
