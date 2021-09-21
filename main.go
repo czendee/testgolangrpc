@@ -28,7 +28,7 @@ func (s *server) SayHello(ctx context.Context, in *hw.HelloRequest) (*hw.HelloRe
 func (s *server) SayMultiplica(ctx context.Context, in *mul.MultiplicaRequest) (*mul.MultiplicaReply, error) {
 	
 	
-	elemento1 :=in.Name
+	elemento1 :=in.Numero
 	var s1final float64 = 0
 	
 	if s1, err := strconv.ParseFloat(elemento1, 64); err == nil {
@@ -40,7 +40,7 @@ func (s *server) SayMultiplica(ctx context.Context, in *mul.MultiplicaRequest) (
 	 fmt.Println(resultado) 
 	sresultado := fmt.Sprintf("%f", resultado)
 
-	return &mul.MultiplicaReply{Message: "Hello " + in.Name +" multiplica" + sresultado}, nil
+	return &mul.MultiplicaReply{Message: "Hello " + in.Numero +" multiplica" + sresultado}, nil
 	
 //	return &mul.MultiplicaReply{Message: "Hello " + in.Name}, nil
 }
