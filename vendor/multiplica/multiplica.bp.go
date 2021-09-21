@@ -36,6 +36,7 @@ const _ = proto.ProtoPackageIsVersion1
 // The request message containing the user's numero.
 type MultiplicaRequest struct {
 	Numero string `protobuf:"bytes,1,opt,name=numero" json:"numero,omitempty"`
+	Veces string `protobuf:"bytes,2,opt,name=veces" json:"veces,omitempty"`
 }
 
 func (m *MultiplicaRequest) Reset()                    { *m = MultiplicaRequest{} }
