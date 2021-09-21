@@ -33,9 +33,9 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 const _ = proto.ProtoPackageIsVersion1
 
-// The request message containing the user's name.
+// The request message containing the user's numero.
 type MultiplicaRequest struct {
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Numero string `protobuf:"bytes,1,opt,name=numero" json:"numero,omitempty"`
 }
 
 func (m *MultiplicaRequest) Reset()                    { *m = MultiplicaRequest{} }
