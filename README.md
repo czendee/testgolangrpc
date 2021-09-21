@@ -14,8 +14,10 @@ protoc -IC:\2021\trabajonuevo\projectoos\multiplica\grpc\testgolangrpc\vendor\ -
 example:
 
 http://youtochigrpc.herokuapp.com/v2/multiplica/greeter/say-multiplica
+
 method POST
 using Postman:   raw json
+
 {
    "numero" :"18",
     "veces" :"20"
@@ -30,6 +32,7 @@ result
 example:
 
 http://youtochigrpc.herokuapp.com/v2/multiplica/greeter/say-multiplica
+
 method POST
 using Postman:   raw json
 
