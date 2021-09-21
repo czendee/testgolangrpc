@@ -67,8 +67,8 @@ func startHTTP(httpPort, grpcPort string) error {
 	}
 
 	gwmuxmultiplica := runtime.NewServeMux()
-	opts := []grpc.DialOption{grpc.WithInsecure()}
-	if err := mul.RegisterGreeterHandlerFromEndpoint(ctx, gwmuxmultiplica, "127.0.0.1:"+grpcPort, opts); err != nil {
+	optsmul := []grpc.DialOption{grpc.WithInsecure()}
+	if err := mul.RegisterGreeterHandlerFromEndpoint(ctx, gwmuxmultiplica, "127.0.0.1:"+grpcPort, optsmul); err != nil {
 		return err
 	}
 	
