@@ -66,6 +66,12 @@ func startHTTP(httpPort, grpcPort string) error {
 		return err
 	}
 
+	gwmuxmultiplica := runtime.NewServeMux()
+	opts := []grpc.DialOption{grpc.WithInsecure()}
+	if err := mul.RegisterGreeterHandlerFromEndpoint(ctx, gwmuxmultiplica, "127.0.0.1:"+grpcPort, opts); err != nil {
+		return err
+	}
+	
 	mux := http.NewServeMux()
 	mux.HandleFunc("/v1/helloworld/greeter/swagger", func(w http.ResponseWriter, r *http.Request) {
 		Set(w, ContentType("application/json"))
