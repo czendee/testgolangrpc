@@ -81,7 +81,7 @@ func NewGreeterClient(cc *grpc.ClientConn) GreeterClient {
 	return &greeterClient{cc}
 }
 
-func (c *greeterClient) SayHello(ctx context.Context, in *MultiplicaRequest, opts ...grpc.CallOption) (*MultiplicaReply, error) {
+func (c *greeterClient) SayMultiplica(ctx context.Context, in *MultiplicaRequest, opts ...grpc.CallOption) (*MultiplicaReply, error) {
 	out := new(MultiplicaReply)
 	err := grpc.Invoke(ctx, "/multiplica.Greeter/SayMultiplica", in, out, c.cc, opts...)
 	if err != nil {
