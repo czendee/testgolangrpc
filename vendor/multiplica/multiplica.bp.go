@@ -68,20 +68,20 @@ const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Greeter service
 
-type GreeterClient interface {
+type GreeterClientM interface {
 	// Sends a greeting
 	SayMultiplica(ctx context.Context, in *MultiplicaRequest, opts ...grpc.CallOption) (*MultiplicaReply, error)
 }
 
-type greeterClient struct {
+type greeterClientM struct {
 	cc *grpc.ClientConn
 }
 
-func NewGreeterClient(cc *grpc.ClientConn) GreeterClient {
-	return &greeterClient{cc}
+func NewGreeterClient(cc *grpc.ClientConn) GreeterClientM {
+	return &greeterClientM{cc}
 }
 
-func (c *greeterClient) SayHello(ctx context.Context, in *MultiplicaRequest, opts ...grpc.CallOption) (*MultiplicaReply, error) {
+func (c *greeterClientM) SayHello(ctx context.Context, in *MultiplicaRequest, opts ...grpc.CallOption) (*MultiplicaReply, error) {
 	out := new(MultiplicaReply)
 	err := grpc.Invoke(ctx, "/multiplica.Greeter/SayMultiplica", in, out, c.cc, opts...)
 	if err != nil {
@@ -92,12 +92,12 @@ func (c *greeterClient) SayHello(ctx context.Context, in *MultiplicaRequest, opt
 
 // Server API for Greeter service
 
-type GreeterServer interface {
+type GreeterServerM interface {
 	// Sends a greeting
 	SayHello(context.Context, *MultiplicaRequest) (*MultiplicaReply, error)
 }
 
-func RegisterGreeterServer(s *grpc.Server, srv GreeterServer) {
+func RegisterGreeterServer(s *grpc.Server, srv GreeterServerM) {
 	s.RegisterService(&_Greeter_serviceDesc, srv)
 }
 
@@ -107,24 +107,24 @@ func _Greeter_SayMultiplica_Handler(srv interface{}, ctx context.Context, dec fu
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GreeterServer).SayMultiplica(ctx, in)
+		return srv.(GreeterServerM).SayMultiplica(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
 		FullMethod: "/multiplica.Greeter/SayMultiplica",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServer).SayMultiplica(ctx, req.(*MultiplicaRequest))
+		return srv.(GreeterServerM).SayMultiplica(ctx, req.(*MultiplicaRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 var _Greeter_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "multiplica.Greeter",
-	HandlerType: (*GreeterServer)(nil),
+	HandlerType: (*GreeterServerM)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SayMultiplicao",
+			MethodName: "SayMultiplica",
 			Handler:    _Greeter_SayMultiplica_Handler,
 		},
 	},
