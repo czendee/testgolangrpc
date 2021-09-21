@@ -36,6 +36,8 @@ func startGRPC(port string) error {
 	}
 	s := grpc.NewServer()
 	hw.RegisterGreeterServer(s, &server{})
+	
+	mul.RegisterGreeterServer(s, &server{})
 	return s.Serve(lis)
 }
 
