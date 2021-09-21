@@ -41,7 +41,7 @@ func (s *server) SayMultiplica(ctx context.Context, in *mul.MultiplicaRequest) (
 	
 	if s2, err := strconv.ParseFloat(elemento2, 64); err == nil {
              fmt.Println(s2) // 3.1415927410125732
-		s1final =s2;
+		s2final =s2;
        }
 	
 	resultado := s1final* s2final;
