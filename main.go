@@ -12,6 +12,7 @@ import (
 	"google.golang.org/grpc"
 
 	hw "github.com/kyleconroy/grpc-heroku/helloworld"
+	mul "vendor/multiplica/multiplica"
 )
 
 type server struct{}
@@ -20,6 +21,12 @@ type server struct{}
 func (s *server) SayHello(ctx context.Context, in *hw.HelloRequest) (*hw.HelloReply, error) {
 	return &hw.HelloReply{Message: "Hello " + in.Name}, nil
 }
+
+// SayMultiplica implements multiplica.GreeterServer
+func (s *server) SayMultiplica(ctx context.Context, in *mul.MultiplicaRequest) (*mul.MultiplicaReply, error) {
+	return &mul.MultiplicaReply{Message: "Hello " + in.Name}, nil
+}
+
 
 func startGRPC(port string) error {
 	lis, err := net.Listen("tcp", ":"+port)
