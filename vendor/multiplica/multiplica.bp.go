@@ -94,7 +94,7 @@ func (c *greeterClientM) SayHello(ctx context.Context, in *MultiplicaRequest, op
 
 type GreeterServerM interface {
 	// Sends a greeting
-	SayHello(context.Context, *MultiplicaRequest) (*MultiplicaReply, error)
+	SayMultiplica(context.Context, *MultiplicaRequest) (*MultiplicaReply, error)
 }
 
 func RegisterGreeterServer(s *grpc.Server, srv GreeterServerM) {
