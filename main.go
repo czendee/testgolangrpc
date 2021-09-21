@@ -43,8 +43,8 @@ func (s *server) SayMultiplica(ctx context.Context, in *mul.MultiplicaRequest) (
 	 fmt.Println(resultado) 
 	sresultado := fmt.Sprintf("%f", resultado)
 
-	return &mul.MultiplicaReply{Message: " " + in.Numero +" multiplica" + sresultado}, nil
-	
+//	return &mul.MultiplicaReply{Message: " " + in.Numero +" multiplica" + sresultado}, nil
+        return &mul.MultiplicaReply{Message: " " + sresultado}, nil
 }
 
 
